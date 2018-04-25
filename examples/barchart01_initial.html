@@ -62,6 +62,21 @@
   // both old and new elements
 
   // EXIT
+
+  // == THK BEGIN ==
+  let bars = d3.select('svg').selectAll('rect').data(data);
+  let bars_enter = bars.enter().append('rect')
+    .classed('bar', true)
+    .attr('height', bar_height)
+    .attr('x',20);
+
+  bars.merge(bars_enter)
+    .attr('y', (d, i) => i * (bar_height + 5) )
+    .attr('width', (d, i) => d*7);
+
+  bars.exit().remove();
+  // == THK END ==
+
   </script>
 </body>
 </html>
